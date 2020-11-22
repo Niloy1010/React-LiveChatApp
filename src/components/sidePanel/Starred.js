@@ -20,6 +20,14 @@ class Starred extends Component {
         }
     }
 
+    componentWillUnmount() {
+        this.removeListener();
+    }
+
+    removeListener = () => {
+        this.state.usersRef.child(`${this.state.user.uid}/starred`).off();
+    }
+
     addListeners = userid => {
         this.state.usersRef.child(userid).child('starred').on('child_added',snap=>{
             const starredChannel = {id: snap.key, ...snap.val()};
