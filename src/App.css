@@ -1,28 +1,173 @@
-.App {
-  text-align: center;
+html,
+body,
+.app {
+  height: 100vh;
+  background: #eee;
+  padding: 1em;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.messages {
+  height: 440px;
+  overflow-y: scroll;
+}
+.message__form {
+  width: 100%;
+  left: 0;
+  right: 1em;
+  z-index: 200;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.message__self {
+  border-left: 3px solid orange;
+  padding-left: 8px;
+  text-align: left;
+}
+.message_other {
+  text-align: left;
+}
+.message__image {
+  padding: 1em;
+  height: 20px;
+  width: 20px;
 }
 
-.App-title {
-  font-size: 1.5em;
+.progress_bar {
+  margin: 0.3em 0 0 0 !important;
 }
 
-.App-intro {
-  font-size: large;
+.menu {
+  padding-bottom: 2em;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.color__container {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  width: 35px;
+  border-radius: 3px;
+}
+
+.color__square {
+  width: 35px;
+  height: 35px;
+}
+
+.color__overlay {
+  width: 85px;
+  height: 35px;
+  transform: rotate(225deg);
+}
+.user_typing {
+  font-style: italic;
+  font-weight: bold;
+  margin-right: 3px;
+}
+.typing {
+  width: 5em;
+  height: 2em;
+  position: relative;
+  padding: 10px;
+  margin-left: 5px;
+  background: #e6e6e6;
+  border-radius: 20px;
+}
+
+.typing_dot {
+  float: left;
+  width: 8px;
+  height: 8px;
+  margin: 0 4px;
+  background-color: #8d8c91;
+  border-radius: 50%;
+  opacity: 0;
+  animation: loadingFade 1s infinite;
+}
+.typing_dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.typing_dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing_dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes loadingFade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.emojiPicker {
+  position: absolute;
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  height: 40px;
+  margin-bottom: 10px;
+}
+.skeleton::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  animation: sweep 2s infinite;
+  background-image: linear-gradient(
+    to left,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+}
+
+@keyframes sweep {
+  0% {
+    transform: translate(-100%);
+  }
+  50% {
+    transform: translate(150%);
+  }
+  100% {
+    transform: translate(-100%);
+  }
+}
+
+.skeleton_avatar {
+  height: 35px;
+  width: 35px;
+  border-radius: 3px;
+  background-color: rgba(58, 57, 57, 0.3);
+}
+.skeleton_author {
+  background-color: rgba(58, 57, 57, 0.3);
+  width: 120px;
+  height: 10px;
+  border-radius: 3px;
+  position: absolute;
+  bottom: 30px;
+  left: 40px;
+  right: 0;
+}
+
+.skeleton_details {
+  background-color: rgba(58, 57, 57, 0.3);
+  height: 20px;
+  border-radius: 3px;
+  position: absolute;
+  bottom: 5px;
+  left: 40px;
+  right: 20px;
 }
